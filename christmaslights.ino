@@ -4,10 +4,10 @@
 const unsigned drv1 = PB7; // DRV8833 IN3
 const unsigned drv2 = PB8; // DRV8833 IN4
 const unsigned buttonPin = PA1; 
-const int32_t dutyCyclePercent = 33; // must be between 1 and 50 inclusive
+const int32_t dutyCyclePercent = 30; // must be between 1 and 50 inclusive
 const uint32_t offTimeHours = 7;
 
-const uint32_t frequency = 500; // Hz
+const uint32_t frequency = 1000; // Hz
 const uint32_t cycleTime = 1000000l / frequency;
 const int32_t timeOn = (dutyCyclePercent * cycleTime) / 100;
 static_assert(timeOn * 2 <= cycleTime);
@@ -56,7 +56,7 @@ void loop() {
   else {
     if (offTimeActivated != 0 && millis() >= offTimeActivated) {
       active = false;
-    }
+    }  
   }
 
   if (active) {
